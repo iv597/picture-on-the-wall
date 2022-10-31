@@ -12,7 +12,7 @@ import {
 export const ModelViewer: FC = () => {
   const [width, setWidth] = useState(1);
   const [height, setHeight] = useState(1);
-  const [modelViewerRef, setModelViewerRef] = useState<Element | null>(null);
+  const [modelViewerRef, setModelViewerRef] = useState<any | null>(null);
   const [keepRatio, setKeepRatio] = useState(true);
 
   useEffect(() => {
@@ -41,7 +41,9 @@ export const ModelViewer: FC = () => {
       image.src = fileURL;
       image.onload = function () {
         if (keepRatio) {
+          // @ts-ignore
           const w = parseFloat(this.width);
+          // @ts-ignore
           const h = parseFloat(this.height);
 
           const scalingFactor = Math.pow(
